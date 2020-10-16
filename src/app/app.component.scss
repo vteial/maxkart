@@ -1,0 +1,63 @@
+@import '../global';
+
+::ng-deep ng-sidenav-container {
+  top: 62px !important;
+}
+
+// side navbar
+img.rounded-circle {
+  width: 90px;
+  height: 90px;
+}
+
+.sm img.rounded-circle {
+  width: 30px;
+  height: 30px;
+}
+
+.profile-title {
+  margin-top: 5px;
+  color: $white;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+ul li {
+  font-size: 16px;
+}
+
+li > ul {
+  margin-left: 10px;
+}
+
+ul li > ul li {
+  font-size: 14px;
+}
+
+ul li a {
+  padding: 10px 0;
+  display: block;
+  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+ul li a span {
+  color: #44bef1;
+}
+
+ul li a:hover {
+  color: $white;
+}
+
+ul li.active > a {
+  background: transparent;
+  color: $white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+// navbar content
+
+main {
+  min-height: 600px;
+}

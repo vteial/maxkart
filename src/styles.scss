@@ -1,0 +1,15 @@
+@import './global';
+
+//@import "./assets/pulse/_variables.scss";
+//@import "./assets/pulse/_bootswatch.scss";
+//@import "../node_modules/bootstrap/scss/bootstrap";
+@import "./assets/pulse/bootstrap.css";
+
+//@import "./assets/cosmo/_variables.scss";
+//@import "./assets/cosmo/_bootswatch.scss";
+//@import "../node_modules/bootstrap/scss/bootstrap";
+//@import "./assets/cosmo/bootstrap.css";
+
+body {
+  background: $gray-100;
+}

@@ -1,0 +1,17 @@
+<header>
+  <div class="brand-big" *ngIf="isExpanded">
+    <h1>Paymence BO</h1>
+  </div>
+  <div class="brand-small" *ngIf="!isExpanded">
+    <h1>P</h1>
+  </div>
+  <div class="custom-menu">
+    <button type="button" id="sidebarCollapse" class="btn btn-primary"
+            (click)="toggleSidenav()">
+      <i class="fa fa-bars"></i><span class="sr-only">Toggle Menu</span>
+    </button>
+  </div>
+  <div>
+    <h1 class="text-info text-capitalize">&nbsp;&nbsp;{{currentViewName}}</h1>
+  </div>
+</header>
