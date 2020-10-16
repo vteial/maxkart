@@ -27,7 +27,7 @@ export class AppComponent  implements OnInit {
     if (environment.theme === 'cosmo') {
       this.navBgColor = '#2780e3';
     } else {
-      this.navBgColor = '#613d7c';
+      this.navBgColor = '#593196';
     }
     console.log(`navBgColr : ${this.navBgColor}`);
   }

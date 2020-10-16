@@ -42,7 +42,9 @@ ul li a {
 }
 
 ul li a span {
-  color: #44bef1;
+  align-content: center;
+  width: 25px;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 ul li a:hover {
@@ -54,6 +56,10 @@ ul li.active > a {
   color: $white;
   text-transform: uppercase;
   font-weight: bold;
+}
+
+ul li.active > a span {
+  color: $white;
 }
 
 // navbar content
