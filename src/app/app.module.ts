@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {SWSizeObserverModule} from '@service-work/size-observer';
 import {SidenavModule} from 'angular-ng-sidenav';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -20,6 +21,7 @@ import {HomeComponent} from './home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SWSizeObserverModule,
     SidenavModule
   ],
   providers: [],

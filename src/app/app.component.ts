@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {environment} from '../environments/environment';
 
 @Component({
@@ -6,7 +6,7 @@ import {environment} from '../environments/environment';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent  implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   appTitle = 'Paymence BO';
 
@@ -23,7 +23,7 @@ export class AppComponent  implements OnInit {
 
   state = 'collapsed';
 
-  constructor() {
+  constructor(private cdr: ChangeDetectorRef) {
     if (environment.theme === 'cosmo') {
       this.navBgColor = '#2780e3';
     } else {
@@ -40,6 +40,17 @@ export class AppComponent  implements OnInit {
     };
   }
 
+  ngAfterViewInit(): void {
+  }
+
+  ngOnDestroy(): void {
+  }
+
+  toggleSidenav(isExpanded: boolean): void {
+    this.isExpanded = isExpanded;
+    this.cdr.detectChanges();
+  }
+
   toggleSidenavCollapsed(): void {
     this.isExpanded = !this.isExpanded;
     this.state = 'collapsed';
@@ -50,15 +61,11 @@ export class AppComponent  implements OnInit {
     this.state = 'hidden';
   }
 
-  toggleSidenav(isExpanded): void {
-    this.isExpanded = isExpanded;
-  }
-
-  open(): void {
+  openSideNav(): void {
     this.isExpanded = true;
   }
 
-  close(): void {
+  closeSideNav(): void {
     this.isExpanded = false;
   }
 

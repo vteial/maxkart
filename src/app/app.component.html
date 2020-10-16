@@ -1,170 +1,175 @@
-<app-header (sidenavToggled)='toggleSidenav($event)'
-            [currentViewName]="currentViewName"></app-header>
+<div #rootElement>
 
-<ng-sidenav-container>
+  <app-header (sidenavToggled)='toggleSidenav($event)'
+              [currentViewName]="currentViewName"></app-header>
 
-  <ng-sidenav
-    [expanded]="isExpanded"
-    [drawerState]="state"
-    [drawerWidth]="'250px'"
-    [drawerWidthCollapsed]="'60px'"
-    [color]="navBgColor">
+  <ng-sidenav-container>
 
-    <div *ngIf="isExpanded">
-      <div class="text-center">
-        <a routerLink="/profile">
-          <img [src]="sessionUser.avatarUrl" class="rounded-circle" alt="avatar">
-        </a>
-        <h5 class="profile-title"><b>{{sessionUser.name}}</b></h5>
-        <h5 class="profile-title"><b>{{sessionUser.roleId}}</b></h5>
+    <ng-sidenav
+      [expanded]="isExpanded"
+      [drawerState]="state"
+      [drawerWidth]="'250px'"
+      [drawerWidthCollapsed]="'60px'"
+      [color]="navBgColor">
+
+      <div *ngIf="isExpanded">
+        <div class="text-center">
+          <a routerLink="/profile">
+            <img [src]="sessionUser.avatarUrl" class="rounded-circle" alt="avatar">
+          </a>
+          <h5 class="profile-title"><b>{{sessionUser.name}}</b></h5>
+          <h5 class="profile-title"><b>{{sessionUser.roleId}}</b></h5>
+        </div>
+        <ul class="list-unstyled components ml-3 mb-5">
+          <li routerLinkActive="active">
+            <a routerLink="/home" title="Home">
+              <span class="fa fa-home"></span>Home
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/transaction-list" title="Transactions">
+              <span class="fas fa-dollar-sign"></span>Transactions
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/merchant-list" title="Merchants">
+              <span class="fas fa-user-tie"></span>Merchants
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/user-list" title="Users">
+              <span class="fas fa-user"></span>Users
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/subscription-list" title="Subscriptions">
+              <span class="fas fa-id-card-alt"></span>Subscriptions
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/payment-method-list" title="Payment Methods">
+              <span class="fab fa-cc-mastercard"></span>Payment Methods
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/account-list" title="Accounts">
+              <span class="fas fa-file-invoice-dollar"></span>Accounts
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/reports" title="Reports">
+              <span class="fas fa-file-invoice"></span>Reports
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/settings" title="Settings">
+              <span class="fas fa-cogs"></span>Settings
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/sign-out" title="Sign Out">
+              <span class="fas fa-sign-out-alt"></span>Sign Out
+            </a>
+          </li>
+        </ul>
       </div>
-      <ul class="list-unstyled components ml-3 mb-5">
-        <li routerLinkActive="active">
-          <a routerLink="/home" title="Home">
-            <span class="fa fa-home"></span>Home
+      <div *ngIf="!isExpanded">
+        <div class="text-center">
+          <a routerLink="/profile" class="sm">
+            <img [src]="sessionUser.avatarUrl" class="rounded-circle" alt="avatar">
           </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/transaction-list" title="Transactions">
-            <span class="fas fa-dollar-sign"></span>Transactions
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/merchant-list" title="Merchants">
-            <span class="fas fa-user-tie"></span>Merchants
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/user-list" title="Users">
-            <span class="fas fa-user"></span>Users
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/subscription-list" title="Subscriptions">
-            <span class="fas fa-id-card-alt"></span>Subscriptions
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/payment-method-list" title="Payment Methods">
-            <span class="fab fa-cc-mastercard"></span>Payment Methods
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/account-list" title="Accounts">
-            <span class="fas fa-file-invoice-dollar"></span>Accounts
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/reports" title="Reports">
-            <span class="fas fa-file-invoice"></span>Reports
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/settings" title="Settings">
-            <span class="fas fa-cogs"></span>Settings
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/sign-out" title="Sign Out">
-            <span class="fas fa-sign-out-alt"></span>Sign Out
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div *ngIf="!isExpanded">
-      <div class="text-center">
-        <a routerLink="/profile" class="sm">
-          <img [src]="sessionUser.avatarUrl" class="rounded-circle" alt="avatar">
-        </a>
-        <!--
-        <h5 class="profile-title"><b>{{sessionUser.name}}</b></h5>
-        <h5 class="profile-title"><b>{{sessionUser.roleId}}</b></h5>
-        -->
+          <!--
+          <h5 class="profile-title"><b>{{sessionUser.name}}</b></h5>
+          <h5 class="profile-title"><b>{{sessionUser.roleId}}</b></h5>
+          -->
+        </div>
+        <ul class="list-unstyled components ml-3 mb-5">
+          <li routerLinkActive="active">
+            <a routerLink="/home" title="Home">
+              <span class="fa fa-home"></span>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/transaction-list" title="Transactions">
+              <span class="fas fa-dollar-sign"></span>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/merchant-list" title="Merchants">
+              <span class="fas fa-user-tie"></span>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/user-list" title="Users">
+              <span class="fas fa-user"></span>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/subscription-list" title="Subscriptions">
+              <span class="fas fa-id-card-alt"></span>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/payment-method-list" title="Payment Methods">
+              <span class="fab fa-cc-mastercard"></span>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/account-list" title="Accounts">
+              <span class="fas fa-file-invoice-dollar"></span>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/reports" title="Reports">
+              <span class="fas fa-file-invoice"></span>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/settings" title="Settings">
+              <span class="fas fa-cogs"></span>
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="/sign-out" title="Sign Out">
+              <span class="fas fa-sign-out-alt"></span>
+            </a>
+          </li>
+        </ul>
       </div>
-      <ul class="list-unstyled components ml-3 mb-5">
-        <li routerLinkActive="active">
-          <a routerLink="/home" title="Home">
-            <span class="fa fa-home"></span>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/transaction-list" title="Transactions">
-            <span class="fas fa-dollar-sign"></span>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/merchant-list" title="Merchants">
-            <span class="fas fa-user-tie"></span>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/user-list" title="Users">
-            <span class="fas fa-user"></span>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/subscription-list" title="Subscriptions">
-            <span class="fas fa-id-card-alt"></span>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/payment-method-list" title="Payment Methods">
-            <span class="fab fa-cc-mastercard"></span>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/account-list" title="Accounts">
-            <span class="fas fa-file-invoice-dollar"></span>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/reports" title="Reports">
-            <span class="fas fa-file-invoice"></span>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/settings" title="Settings">
-            <span class="fas fa-cogs"></span>
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="/sign-out" title="Sign Out">
-            <span class="fas fa-sign-out-alt"></span>
-          </a>
-        </li>
-      </ul>
-    </div>
 
-  </ng-sidenav>
+    </ng-sidenav>
 
-  <ng-sidenav-content>
+    <ng-sidenav-content>
 
-    <main>
-      <!--
-      <div>
-        <button class="btn btn-outline-info" (click)="toggleSidenavCollapsed()">
-          Toggle (Drawer state 'collapsed')
-        </button>
-        &nbsp;&nbsp;
-        <button class="btn btn-outline-info" (click)="open()">Open</button>
-        &nbsp;&nbsp;
-        Drawer State : <span class="text-primary">{{state}}</span>
-        <br/><br/>
-        <button class="btn btn-outline-info" (click)="toggleSidenavHidden()">
-          Toggle (Drawer state 'hidden')
-        </button>
-        &nbsp;&nbsp;
-        <button class="btn btn-outline-info" (click)="close()">Close</button>
-        &nbsp;&nbsp;
-        Is Expanded : <span class="text-primary">{{isExpanded}}</span>
-      </div>
-      -->
-      <router-outlet></router-outlet>
-    </main>
+      <main><router-outlet></router-outlet></main>
 
-    <app-footer [appTitle]="appTitle" [appDescription]="appDescription"></app-footer>
+      <app-footer [appTitle]="appTitle" [appDescription]="appDescription"></app-footer>
 
-  </ng-sidenav-content>
+    </ng-sidenav-content>
 
-</ng-sidenav-container>
+  </ng-sidenav-container>
 
+</div>
+
+<!--
+<div>
+  Drawer State : <span class="text-primary">{{state}}</span>
+  &nbsp;&nbsp;
+  Is Expanded : <span class="text-primary">{{isExpanded}}</span>
+  <button class="btn btn-outline-info" (click)="toggleSidenavCollapsed()">
+    Toggle (Drawer state 'collapsed')
+  </button>
+  &nbsp;&nbsp;
+  <button class="btn btn-outline-info" (click)="openSideNave()">Open</button>
+  &nbsp;&nbsp;
+  Drawer State : <span class="text-primary">{{state}}</span>
+  <br/><br/>
+  <button class="btn btn-outline-info" (click)="toggleSidenavHidden()">
+    Toggle (Drawer state 'hidden')
+  </button>
+  &nbsp;&nbsp;
+  <button class="btn btn-outline-info" (click)="closeSideNav()">Close</button>
+  &nbsp;&nbsp;
+  Is Expanded : <span class="text-primary">{{isExpanded}}</span>
+</div>
+-->
