@@ -1,0 +1,85 @@
+<div *ngIf="this.item">
+
+  <div class="row">
+    <div class="col-md-10 text-center">
+      <h4 class="display-4 text-capitalize">{{item.name}}</h4>
+    </div>
+    <div class="col-md-2 text-right">
+      <a class="btn btn-outline-primary mt-2" routerLink="/profile-edit">
+        <i class="fas fa-edit fa-2x"></i>
+      </a>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="col">
+      <div>
+        <h4 class="display-5 text-capitalize text-warning">General Info</h4>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-4 mb-1">
+          <strong>Id No.</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4>{{item.idNo}}</h4>
+        </div>
+        <div class="col-md-4 mb-1">
+          <strong>User Id</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4>{{item.userId}}</h4>
+        </div>
+        <div class="col-md-4 mb-1">
+          <strong>Mobile</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4>{{item.mobile}}</h4>
+        </div>
+        <div class="col-md-4 mb-1">
+          <strong>Email</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4>{{item.email}}</h4>
+        </div>
+      </div>
+      <div>
+        <h4 class="display-5 text-capitalize text-warning">Bank Info</h4>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-4 mb-1">
+          <strong>Bank Name</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4 class="text-capitalize">{{item.bankName}}</h4>
+        </div>
+        <div class="col-md-4 mb-1">
+          <strong>Account No.</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4>{{item.bankNo}}</h4>
+        </div>
+      </div>
+      <br/><br/>
+      <div class="row">
+        <div class="col">&nbsp;</div>
+        <div class="col">
+          <button type="button" class="btn-warning btn-block"
+            (click)="showChangePassword()">
+            CHANGE PASSWORD</button>
+        </div>
+        <div class="col">&nbsp;</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="bg-light text-center">
+        <br/><br/>
+        <img [src]="profileImageUrl" class="rounded-circle" alt="avatar"
+           width="400" height="400">
+        <br/><br/>
+      </div>
+    </div>
+  </div>
+
+  <app-json-viewer [content]="item" *ngIf="env.mode === 'dev'"></app-json-viewer>
+
+</div>

@@ -1,0 +1,30 @@
+<hr/>
+<div class="row">
+  <div class="col-md-4">
+    <h5 class="text-muted">Source</h5>
+  </div>
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-6 text-right">
+        <h5 class="text-muted">{{viewName}}</h5>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-outline-secondary btn-sm"
+                (click)="copyToClipBoard()">Copy To Clipboard</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 text-right">
+    <h5 class="text-muted">Object</h5>
+  </div>
+</div>
+<hr/>
+<div class="row">
+  <div class="col" id="jsonViewerSource">
+    <pre>{{contentSource | json}}</pre>
+  </div>
+  <div class="col" id="jsonViewerObject">
+    <pre>{{contentObject | json}}</pre>
+  </div>
+</div>
+<br/>

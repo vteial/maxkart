@@ -1,0 +1,11 @@
+#jsonViewerContent {
+  max-width: 1000px;
+}
+
+#jsonViewerObject {
+  max-width: 50%;
+}
+
+#jsonViewerSource {
+  max-width: 50%;
+}

@@ -1,0 +1,338 @@
+<div class="row">
+  <div class="col-md-2">
+    <a class="btn btn-outline-secondary mt-2" routerLink="/merchant-list">
+      <i class="fas fa-arrow-circle-left fa-2x"></i>&nbsp;
+    </a>
+  </div>
+  <div class="col-md-8 text-center">
+    <h4 class="display-4 text-capitalize" *ngIf="item">{{item.name}}</h4>
+  </div>
+  <div class="col-md-2 text-right">
+    <a class="btn btn-outline-primary mt-2" routerLink="/merchant-list/{{itemId}}/edit">
+      <i class="fas fa-edit fa-2x"></i>
+    </a>
+  </div>
+</div>
+<hr/>
+
+<div *ngIf="item">
+  <div class="row">
+    <div class="col">
+      <div>
+        <h4 class="display-5 text-warning">General Info</h4>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-4 mb-1">
+          <strong>Merchant Type</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4>{{item.type}}</h4>
+        </div>
+        <div class="col-md-4 mb-1">
+          <strong>Id Number</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4>{{item.idNo}}</h4>
+        </div>
+        <div class="col-md-4 mb-1">
+          <strong>Nick Name</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4 class="text-capitalize">{{item.nickName}}</h4>
+        </div>
+        <div class="col-md-4 mb-1">
+          <strong>Mobile</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4>{{item.mobile}}</h4>
+        </div>
+        <div class="col-md-4 mb-1">
+          <strong>Email</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4>{{item.email}}</h4>
+        </div>
+        <div class="col-md-4 mb-1">
+          <strong>Address</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4 class="text-capitalize">{{item.address}}</h4>
+        </div>
+        <div class="col-md-4 mb-1">
+          <strong>Subscription</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <button type="button" class="btn btn-link text-capitalize" *ngIf="item.subscription"
+                  (click)="viewSubscription()">{{item.subscription.name}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div>
+        <h4 class="display-5 text-capitalize text-warning">Bank Info</h4>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-4 mb-1">
+          <strong>Bank Name</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4 class="text-capitalize">{{item.bankName}}</h4>
+        </div>
+        <div class="col-md-4 mb-1">
+          <strong>Account No.</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4>{{item.bankNo}}</h4>
+        </div>
+      </div>
+      <div>
+        <h4 class="display-5 text-capitalize text-warning">System Info</h4>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-4 mb-1">
+          <strong>Direct Redirect URL</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4>{{item.directReturnUrl}}</h4>
+        </div>
+        <div class="col-md-4 mb-1">
+          <strong>Indirect Redirect URL</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4>{{item.indirectReturnUrl}}</h4>
+        </div>
+        <div class="col-md-4 mb-1">
+          <strong>Status</strong>
+        </div>
+        <div class="col-md-8 mb-1">
+          <h4 class="text-uppercase {{item.statusClazz}}">{{item.status}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-2">
+      <strong>Documents</strong>
+    </div>
+    <div class="col-md-10">
+      <span *ngFor="let o of item.docs">
+        <button type="button" class="btn btn-sm btn-outline-info"
+                (click)="showDoc(o)">{{o.label}}</button>
+        &nbsp;&nbsp;&nbsp;
+      </span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+      <strong>Remarks</strong>
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" placeholder="Approvel Remarks"
+             [(ngModel)]="item.approvalRemarks" name="itemApprovalRemarks"/>
+    </div>
+    <div class="col-md-4 text-right">
+      <button type="button" class="btn btn-danger" *ngIf="item.status === 'active'"
+              (click)="makeInActive()"> BLOCK </button>
+      <button type="button" class="btn btn-primary" *ngIf="item.status === 'inactive'"
+              (click)="makeActive()"> ACTIVATE </button>
+      <button type="button" class="btn btn-warning" *ngIf="item.status === 'pending_approval'"
+              (click)="makeNeedInfo()"> NEED INFO </button>
+      &nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-primary" *ngIf="item.status === 'pending_approval'"
+              (click)="makeApprove()"> APPROVE </button>
+      &nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-danger" *ngIf="item.status === 'pending_approval'"
+              (click)="makeReject()"> REJECT </button>
+    </div>
+  </div>
+
+  <br/><br/>
+
+  <tabset [justified]="false">
+    <tab heading="Owner">
+      <br/>
+      <h4 class="display-5 text-warning">Owner Info</h4>
+      <br/>
+      <div class="row mb-2">
+        <div class="col-md-2 mb-1">
+          <strong>User Id</strong>
+        </div>
+        <div class="col-md-4 mb-1">
+          <h4>{{item.userOwner.userId}}</h4>
+        </div>
+        <div class="col-md-2 mb-1">
+          <strong>Name</strong>
+        </div>
+        <div class="col-md-4 mb-1">
+          <h4 class="text-capitalize">{{item.userOwner.name}}</h4>
+        </div>
+        <div class="col-md-2 mb-1">
+          <strong>Mobile</strong>
+        </div>
+        <div class="col-md-4 mb-1">
+          <h4>{{item.userOwner.mobile}}</h4>
+        </div>
+        <div class="col-md-2 mb-1">
+          <strong>Email</strong>
+        </div>
+        <div class="col-md-4 mb-1">
+          <h4>{{item.userOwner.email}}</h4>
+        </div>
+        <div class="col-md-2 mb-1">
+          <strong>Bank Name</strong>
+        </div>
+        <div class="col-md-4 mb-1">
+          <h4 class="text-capitalize">{{item.userOwner.bankName}}</h4>
+        </div>
+        <div class="col-md-2 mb-1">
+          <strong>Bank No</strong>
+        </div>
+        <div class="col-md-4 mb-1">
+          <h4>{{item.userOwner.bankNo}}</h4>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-2">
+          <strong>Documents</strong>
+        </div>
+        <div class="col-md-10">
+      <span *ngFor="let o of item.userOwner.docs">
+        <button type="button" class="btn btn-sm btn-outline-info"
+                (click)="showDoc(o)">{{o.name | uppercase}}</button>
+        &nbsp;&nbsp;&nbsp;
+      </span>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-md-2">
+          <strong>Remarks</strong>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Approval Remarks"
+                 [(ngModel)]="item.userOwner.approvalRemarks" name="userApprovalRemarks"/>
+        </div>
+        <div class="col-md-4 text-right">
+          <button type="button" class="btn btn-danger" *ngIf="item.userOwner.status === 'active'"
+                  (click)="makeUserOwnerInActive()"> BLOCK </button>
+          <button type="button" class="btn btn-primary" *ngIf="item.userOwner.status === 'inactive'"
+                  (click)="makeUserOwnerActive()"> ACTIVATE </button>
+          <button type="button" class="btn btn-warning" *ngIf="item.userOwner.status === 'pending_approval'"
+                  (click)="makeUserOwnerNeedInfo()"> NEED INFO </button>
+          &nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary" *ngIf="item.userOwner.status === 'pending_approval'"
+                  (click)="makeUserOwnerApprove()"> APPROVE </button>
+          &nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-danger" *ngIf="item.userOwner.status === 'pending_approval'"
+                  (click)="makeUserOwnerReject()"> REJECT </button>
+        </div>
+      </div>
+      <br/>
+    </tab>
+    <tab heading="Moderators">
+      <br/>
+      <div *ngIf="!item.userModeratorId">
+        <br/>
+        <div class="text-center">
+          <h3 class="text-muted">There is no moderators for this merchant!</h3>
+        </div>
+        <br/>
+      </div>
+      <div *ngIf="item.userModeratorId">
+        <div class="row mb-2">
+          <div class="col-md-7">
+            <h4 class="display-5 text-warning">Moderator Info</h4>
+          </div>
+          <div class="col-md-2">
+            <div class="mt-2"><strong>Select Moderator</strong></div>
+          </div>
+          <div class="col-md-3">
+            <select class="form-control" [(ngModel)]="item.userModeratorId" name="itemUserModeratorId"
+                    (change)="onUserModeratorSelection()">
+              <option *ngFor="let o of item.userModerators" [value]="o.id">{{o.name}}</option>
+            </select>
+          </div>
+        </div>
+        <hr/>
+        <div class="row mb-2">
+          <div class="col-md-2 mb-1">
+            <strong>User Id</strong>
+          </div>
+          <div class="col-md-4 mb-1">
+            <h4>{{item.userModerator.userId}}</h4>
+          </div>
+          <div class="col-md-2 mb-1">
+            <strong>Name</strong>
+          </div>
+          <div class="col-md-4 mb-1">
+            <h4 class="text-capitalize">{{item.userModerator.name}}</h4>
+          </div>
+          <div class="col-md-2 mb-1">
+            <strong>Mobile</strong>
+          </div>
+          <div class="col-md-4 mb-1">
+            <h4>{{item.userModerator.mobile}}</h4>
+          </div>
+          <div class="col-md-2 mb-1">
+            <strong>Email</strong>
+          </div>
+          <div class="col-md-4 mb-1">
+            <h4>{{item.userModerator.email}}</h4>
+          </div>
+          <div class="col-md-2 mb-1">
+            <strong>Bank Name</strong>
+          </div>
+          <div class="col-md-4 mb-1">
+            <h4 class="text-capitalize">{{item.userModerator.bankName}}</h4>
+          </div>
+          <div class="col-md-2 mb-1">
+            <strong>Bank No</strong>
+          </div>
+          <div class="col-md-4 mb-1">
+            <h4>{{item.userModerator.bankNo}}</h4>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-2">
+            <strong>Documents</strong>
+          </div>
+          <div class="col-md-10">
+            <span *ngFor="let o of item.userModerator.docs">
+              <button type="button" class="btn btn-sm btn-outline-info"
+                      (click)="showDoc(o)">{{o.name | uppercase}}</button>
+              &nbsp;&nbsp;&nbsp;
+            </span>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-md-2">
+            <strong>Remarks</strong>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Approval Remarks"
+                   [(ngModel)]="item.userModerator.approvalRemarks" name="userApprovalRemarks"/>
+          </div>
+          <div class="col-md-4 text-right">
+            <button type="button" class="btn btn-danger" *ngIf="item.userModerator.status === 'active'"
+                    (click)="makeUserModeratorInActive()"> BLOCK </button>
+            <button type="button" class="btn btn-primary" *ngIf="item.userModerator.status === 'inactive'"
+                    (click)="makeUserModeratorActive()"> ACTIVATE </button>
+            <button type="button" class="btn btn-warning" *ngIf="item.userModerator.status === 'pending_approval'"
+                    (click)="makeUserModeratorNeedInfo()"> NEED INFO </button>
+            &nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-primary" *ngIf="item.userModerator.status === 'pending_approval'"
+                    (click)="makeUserModeratorApprove()"> APPROVE </button>
+            &nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-danger" *ngIf="item.userModerator.status === 'pending_approval'"
+                    (click)="makeUserModeratorReject()"> REJECT </button>
+          </div>
+        </div>
+      </div>
+      <br/>
+    </tab>
+  </tabset>
+
+  <app-json-viewer [content]="item" *ngIf="env.mode === 'dev'"></app-json-viewer>
+
+</div>
+
+

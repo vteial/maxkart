@@ -1,12 +1,15 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {environment} from '../environments/environment';
+import {LocalStorage} from 'ngx-webstorage';
+import {ReactiveFormConfig} from '@rxweb/reactive-form-validators';
+import {BaseComponent} from './base.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
+export class AppComponent implements OnInit, AfterViewInit {
 
   appTitle = 'Paymence BO';
 
@@ -16,7 +19,7 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   isExpanded = true;
 
-  // @LocalStorage()
+  @LocalStorage()
   sessionUser: any;
 
   navBgColor: string;
@@ -30,20 +33,31 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       this.navBgColor = '#593196';
     }
     console.log(`navBgColr : ${this.navBgColor}`);
+    ReactiveFormConfig.set({
+      validationMessage: {
+        required: 'This field is required.',
+        alpha: 'This should have only alphabets and spaces.',
+        minLength: 'This should have minimum of {{0}} characters.',
+        password: 'This should satisfy the above condition.',
+        compare: 'This should match with another field'
+      }
+    });
   }
 
   ngOnInit(): void {
-    this.sessionUser = {
-      name: 'eialarasu',
-      roleId: 'admin',
-      avatarUrl: 'assets/images/avatar_2x.png'
-    };
+    // this.sessionUser = {
+    //   name: 'eialarasu',
+    //   roleId: 'admin',
+    //   avatarUrl: 'assets/images/avatar_2x.png'
+    // };
   }
 
   ngAfterViewInit(): void {
+    this.cdr.detectChanges();
   }
 
-  ngOnDestroy(): void {
+  onActivate(baseComponent: BaseComponent): void {
+    this.currentViewName = baseComponent.viewName;
   }
 
   toggleSidenav(isExpanded: boolean): void {

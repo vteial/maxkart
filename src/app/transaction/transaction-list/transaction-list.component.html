@@ -1,0 +1,89 @@
+<form #form0 = "ngForm" (ngSubmit) = "search()">
+  <div class="card">
+    <div class="card-body">
+      <div class="form-row mt-2">
+        <div class="form-group col-md-4">
+          <!--
+          <label>Id No</label>
+          -->
+          <input type="text" class="form-control" placeholder="Order Number"
+                 [(ngModel)]="searchModel.orderNo" name="orderNo"/>
+        </div>
+        <div class="form-group col-md-4">
+          <!--
+          <label>User Name</label>
+          <input type="text" class="form-control" placeholder="Customer Name"
+                 [(ngModel)]="searchModel.name" name="name"/>
+          -->
+          <select class="form-control" [(ngModel)]="searchModel.name" name="propCategory">
+            <option value="-">&lt;Select Customer&gt;</option>
+            <option *ngFor="let o of merchantLst" [value]="o.name">{{o.name}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4 text-center">
+          <button type="submit" class="btn btn-info">
+            Search
+          </button>
+          &nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-outline-info"
+                  (click)="resetForm()">
+            Reset&nbsp;&nbsp;
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<br/>
+
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md-10">
+        <strong>Total : <span class="text-info">{{items.length}}</span></strong>
+      </div>
+      <div class="col-md-2 text-right">
+        <button type="button" class="btn btn-outline-secondary btn-sm pull-right"
+                (click)="refresh(false)">
+          <i class="fas fa-sync"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body" infiniteScroll
+       [infiniteScrollDistance]="2"
+       [infiniteScrollThrottle]="50"
+       (scrolled)="onScrollDown()" *ngIf="items">
+    <table class="table table-sm xtable-bordered table-hover">
+      <thead>
+      <tr>
+        <th scope="col" class="text-center" width="40">#</th>
+        <th scope="col" width="130">Order No.</th>
+        <th scope="col">Merchant Name</th>
+        <th scope="col" class="text-center" width="150">Amount</th>
+        <th scope="col" width="150">Status</th>
+        <th scope="col" width="40">&nbsp;</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of items; index as i;">
+        <td class="text-right">{{i+1}}</td>
+        <td>{{item.orderNo}}</td>
+        <td class="text-capitalize">
+          <span *ngIf="item.merchant">{{item.merchant.name}}</span>
+        </td>
+        <td class="text-right">{{item.amount | number:'1.2-2'}}</td>
+        <td>
+          <span class="text-uppercase {{item.statusClazz}}">{{item.status}}</span>
+        </td>
+        <td class="text-center">
+          <button class="btn btn-link btn-sm" (click)="view(item)">
+            <i class="fas fa-eye"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

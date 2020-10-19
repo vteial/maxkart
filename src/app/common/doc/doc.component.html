@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-md-7">
+    <h4 class="display-5 text-warning">Supporting Documents</h4>
+    <br/>
+    <table class="table table-sm xtable-bordered table-hover">
+      <thead>
+      <tr>
+        <th scope="col" class="text-center" width="40">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">File Name</th>
+        <th scope="col" width="100">&nbsp;</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of items; index as i;">
+        <td class="text-right">{{i+1}}</td>
+        <td class="text-capitalize">{{item.label}}</td>
+        <td class="text-uppercase">{{item.type}}</td>
+        <td>{{item.fileName}}</td>
+        <td class="text-center">
+          <button class="btn btn-link btn-sm" (click)="view(item)">
+            <i class="fas fa-eye"></i>
+          </button>
+          &nbsp;&nbsp;
+          <button class="btn btn-link btn-sm" (click)="edit(item)">
+            <i class="fas fa-edit"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-5">
+    <form *ngIf="itemFg" [formGroup]="itemFg" (ngSubmit)="save()">
+      <div class="row">
+        <div class="col-md-10">
+          &nbsp;
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-outline-primary float-right"
+            (click)="add()"><i class="fas fa-plus fa-1x"></i></button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Name <code>*</code></label>
+        <select class="form-control" formControlName="name" (change)="onName()">
+          <option value="-">&lt;Select Name&gt;</option>
+          <option *ngFor="let o of docTypes" [value]="o.name">{{o.label}}</option>
+        </select>
+        <small *ngFor="let em of itemFg.controls.name['errorMessages']"
+               class="form-text text-danger">{{em}}<br/>
+        </small>
+      </div>
+      <div class="form-group">
+        <label>Description </label>
+        <input type="text" placeholder="Description" class="form-control"
+               formControlName="description"/>
+        <small *ngFor="let em of itemFg.controls.description['errorMessages']"
+               class="form-text text-danger">{{em}}<br/>
+        </small>
+      </div>
+      <div class="form-group">
+        <label>Document <code>*</code></label>
+        <input type="file" placeholder="Choose File" class="form-control"
+               formControlName="file" (change)="onFileName($event)"/>
+        <small *ngFor="let em of itemFg.controls.file['errorMessages']"
+               class="form-text text-danger">{{em}}<br/>
+        </small>
+        <!--
+        <div class="custom-file">
+          <input id="dfn" type="file" class="custom-file-input">
+          <label class="custom-file-label" for="dfn">Choose file</label>
+        </div>
+        -->
+      </div>
+      <div class="row">
+        <div class="col">
+          <button type="button" class="btn btn-outline-danger float-left"
+            *ngIf="item.id !== 0" (click)="remove()">
+            <i class="fas fa-trash fa-1x"></i></button>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary float-right">
+            <i class="fas fa-save"></i>&nbsp;&nbsp;SAVE </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

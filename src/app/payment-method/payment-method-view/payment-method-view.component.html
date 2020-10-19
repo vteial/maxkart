@@ -1,0 +1,88 @@
+<div *ngIf="!isEmbedded">
+  <div class="row">
+    <div class="col-md-2">
+      <a class="btn btn-outline-secondary mt-2" routerLink="/payment-method-list">
+        <i class="fas fa-arrow-circle-left fa-2x"></i>&nbsp;
+      </a>
+    </div>
+    <div class="col-md-8 text-center" *ngIf="item">
+      <h4 class="display-4 text-capitalize">{{item.name}}</h4>
+    </div>
+    <div class="col-md-2 text-right" *ngIf="item">
+      <a class="btn btn-outline-primary mt-2" routerLink="/payment-method-list/{{item.id}}/edit">
+        <i class="fas fa-edit fa-2x"></i>
+      </a>
+    </div>
+  </div>
+  <hr/>
+  <div class="row mb-2" *ngIf="item">
+    <div class="col-md-2 mb-1">
+      <strong>Code</strong>
+    </div>
+    <div class="col-md-4 mb-1">
+      <h4 class="text-uppercase">{{item.code}}</h4>
+    </div>
+    <div class="col-md-2 mb-1">
+      <strong>Type</strong>
+    </div>
+    <div class="col-md-4 mb-1">
+      <h4 class="text-capitalize">{{item.type}}</h4>
+    </div>
+    <div class="col-md-2 mb-1">
+      <strong>Amount</strong>
+    </div>
+    <div class="col-md-4 mb-1">
+      <h4>{{item.amount | number:'1.2-2'}}</h4>
+    </div>
+    <div class="col-md-2 mb-1">
+      <strong>Settlement Period</strong>
+    </div>
+    <div class="col-md-4 mb-1">
+      <h4 class="text-capitalize">{{item.settlementPeriod}}</h4>
+    </div>
+    <div class="col-md-2 mb-1">
+      <strong>Status</strong>
+    </div>
+    <div class="col-md-4 mb-1">
+      <h4 class="text-capitalize {{item.statusClazz}}">{{item.status}}</h4>
+    </div>
+  </div>
+  <app-json-viewer [content]="item" *ngIf="item && env.mode === 'dev'"></app-json-viewer>
+</div>
+
+<div *ngIf="isEmbedded">
+  <div class="row">
+    <div class="col">
+      <h4 class="text-capitalize">{{(itemId+1)}}. {{item.name}}</h4>
+    </div>
+    <div class="col text-right">
+      <h4 class="text-uppercase {{item.statusClazz}}">{{item.status}}</h4>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-md-2 mb-1">
+      <strong>Code</strong>
+    </div>
+    <div class="col-md-4 mb-1">
+      <h4 class="text-uppercase">{{item.code}}</h4>
+    </div>
+    <div class="col-md-2 mb-1">
+      <strong>Type</strong>
+    </div>
+    <div class="col-md-4 mb-1">
+      <h4 class="text-capitalize">{{item.type}}</h4>
+    </div>
+    <div class="col-md-2 mb-1">
+      <strong>Amount</strong>
+    </div>
+    <div class="col-md-4 mb-1">
+      <h4>{{item.amount | number:'1.2-2'}}</h4>
+    </div>
+    <div class="col-md-2 mb-1">
+      <strong>Settlement Period</strong>
+    </div>
+    <div class="col-md-4 mb-1">
+      <h4 class="text-capitalize">{{item.settlementPeriod}}</h4>
+    </div>
+  </div>
+</div>

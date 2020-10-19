@@ -1,11 +1,13 @@
 <div #rootElement>
 
-  <app-header (sidenavToggled)='toggleSidenav($event)'
+  <app-header *ngIf="sessionUser"
+              (sidenavToggled)='toggleSidenav($event)'
               [currentViewName]="currentViewName"></app-header>
 
   <ng-sidenav-container>
 
     <ng-sidenav
+      *ngIf="sessionUser"
       [expanded]="isExpanded"
       [drawerState]="state"
       [drawerWidth]="'250px'"
@@ -141,7 +143,7 @@
 
     <ng-sidenav-content>
 
-      <main><router-outlet></router-outlet></main>
+      <main><router-outlet (activate)="onActivate($event)"></router-outlet></main>
 
       <app-footer [appTitle]="appTitle" [appDescription]="appDescription"></app-footer>
 

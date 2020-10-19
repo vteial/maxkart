@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  mode: 'prod',
+  baseApiPrefix: 'https://api.paymence.com/api',
+  theme: 'pulse'
 };

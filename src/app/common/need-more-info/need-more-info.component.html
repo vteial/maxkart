@@ -1,0 +1,103 @@
+
+<div class="modal-header" *ngIf="bsModalRef">
+  <h4 class="modal-title float-left text-capitalize">{{viewName}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close"
+          (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div [class.modal-body]="(bsModalRef)">
+  <div class="text-center text-danger" *ngIf="message">{{message}}</div>
+  <form *ngIf="itemFg" [formGroup]="itemFg" (ngSubmit)="add()">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label class="mb-2 mr-5">Type <code>*</code></label><br/>
+          <div class="pretty p-default p-thick p-pulse mt-2">
+            <input type="radio" formControlName="type" value="text"/>
+            <div class="state p-success">
+              <i class="icon mdi mdi-check"></i>
+              <label class="text-info mr-3">TEXT</label>
+            </div>
+          </div>
+          <div class="pretty p-default p-thick p-pulse mt-2">
+            <input type="radio" formControlName="type" value="file"/>
+            <div class="state p-warning-o">
+              <label class="text-info mr-3">FILE</label>
+            </div>
+          </div>
+          <!--
+          <label>Type </label>
+          <input type="text" placeholder="Type" class="form-control"
+                 formControlName="type"/>
+          <small *ngFor="let em of itemFg.controls.type['errorMessages']"
+                 class="form-text text-danger">{{em}}<br/>
+          </small>
+          -->
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <label>Message <code>*</code></label>
+          <input type="text" placeholder="Message" class="form-control"
+                 formControlName="message"/>
+          <small *ngFor="let em of itemFg.controls.message['errorMessages']"
+                 class="form-text text-danger">{{em}}<br/>
+          </small>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group" *ngIf="item.type === 'file'">
+          <label>File Name</label>
+          <input type="text" placeholder="Message" class="form-control"
+                 formControlName="fileName"/>
+          <small *ngFor="let em of itemFg.controls.message['errorMessages']"
+                 class="form-text text-danger">{{em}}<br/>
+          </small>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <br/>
+        <button type="submit" class="btn btn-outline-primary btn-sm">
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+  <table class="table table-sm table-hover">
+    <thead>
+    <tr>
+      <th scope="col" class="text-center" width="40">#</th>
+      <th scope="col">Type</th>
+      <th scope="col">Message</th>
+      <th scope="col" width="120">&nbsp;</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of items; index as i;">
+      <td class="text-right">{{i+1}}</td>
+      <td class="text-uppercase">{{item.type}}</td>
+      <td>{{item.message}}</td>
+      <td class="text-center">
+        <button type="button" class="btn btn-link btn-sm" (click)="edit(i)">
+          <i class="fas fa-edit"></i>
+        </button>
+        &nbsp;&nbsp;
+        <button type="button" class="btn btn-link btn-sm" (click)="remove(i)">
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="text-center" *ngIf="!bsModalRef">
+    <button type="button" class="btn btn-primary mr-2" (click)="save()">SAVE</button>
+  </div>
+  <br/><br/>
+  <pre>{{reqModel | json}}</pre>
+</div>
+<div class="modal-footer" *ngIf="bsModalRef">
+  <button type="button" class="btn btn-default mr-2" (click)="bsModalRef.hide()">Cancel</button>
+  &nbsp;&nbsp;
+  <button type="button" class="btn btn-primary mr-2" (click)="save()">SAVE</button>
+</div>
