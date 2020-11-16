@@ -3,10 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  mode: 'dev',
-  baseApiPrefix: 'https://api-staging.paymence.com/api',
-  theme: 'pulse'
+  production: false
 };
 
 /*

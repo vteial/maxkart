@@ -1,27 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import {ApiService} from '../@shared/api.service';
-import {Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
 import {BaseComponent} from '../base.component';
 
 @Component({
   selector: 'app-sign-out',
   templateUrl: './sign-out.component.html',
-  styleUrls: ['./sign-out.component.css']
+  styleUrls: ['./sign-out.component.scss']
 })
 export class SignOutComponent extends BaseComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor() {
     super();
-    super.viewName = 'Sign Out';
+    this.viewName = 'sign out';
   }
 
   ngOnInit(): void {
-    this.signOut();
-  }
-
-  signOut(): void {
-    this.apiService.signOut(); console.log('sign out triggered...');
-    this.router.navigateByUrl('/sign-in');
   }
 
 }
