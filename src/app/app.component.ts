@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ReactiveFormConfig} from '@rxweb/reactive-form-validators';
+import {ApiService} from './@shared/api.service';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +13,20 @@ export class AppComponent implements OnInit {
 
   appDescription = 'Max Gold Shop';
 
-  constructor() {
+  constructor(private api: ApiService) {
+    ReactiveFormConfig.set({
+      validationMessage: {
+        required: 'This field is required.',
+        alpha: 'This should have only alphabets and spaces.',
+        minLength: 'This should have minimum of {{0}} characters.',
+        password: 'This should satisfy the above condition.',
+        compare: 'This should match with another field'
+      }
+    });
   }
 
   ngOnInit(): void {
-    // this.sessionUser = {
-    //   name: 'eialarasu',
-    //   roleId: 'admin',
-    //   avatarUrl: 'assets/images/avatar_2x.png'
-    // };
+    this.api.fetchUsers();
   }
 
 }

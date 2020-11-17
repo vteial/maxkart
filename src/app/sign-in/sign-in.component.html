@@ -1,1 +1,19 @@
-<p>sign-in works!</p>
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <mat-form-field>
+      <mat-label>User Id (Email or Mobile No)</mat-label>
+      <input type="text" matInput placeholder="Email Or Mobile No."
+             [(ngModel)]="model.userId" name="userId">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input type="password" matInput placeholder="Password"
+             [(ngModel)]="model.password" name="password">
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button color="primary" type="submit">Sign In</button>
+  </div>
+</form>

@@ -24,6 +24,8 @@
       </button>
       <span>{{currentViewName | uppercase}}</span>
     </mat-toolbar>
-    <router-outlet (activate)="onActivate($event)"></router-outlet>
+    <div class="p-10">
+      <router-outlet (activate)="onActivate($event)"></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
