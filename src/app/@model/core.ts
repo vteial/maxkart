@@ -10,3 +10,18 @@ export class User {
   }
 
 }
+
+export class Product {
+
+  id: string;
+
+  name: string;
+
+  rate: number;
+
+  quantity: number;
+
+  constructor() {
+  }
+
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "name": "1 Gram PAMP Suisse Gold Bar",
+    "rate": 352,
+    "quantity": 10
+  },
+  {
+    "id": "2",
+    "name": "1 oz PAMP Suisse Gold Bar",
+    "rate": 8117,
+    "quantity": 10
+  },
+  {
+    "id": "3",
+    "name": "1/2 oz PAMP Suisse Gold Bar",
+    "rate": 4076,
+    "quantity": 10
+  },
+  {
+    "id": "4",
+    "name": "10 Gram PAMP Suisse Gold Bar",
+    "rate": 2758,
+    "quantity": 10
+  },
+  {
+    "id": "5",
+    "name": "100 Gram PAMP Suisse Gold Bar",
+    "rate": 25803,
+    "quantity": 10
+  }
+]

@@ -24,6 +24,7 @@ import {SignInComponent} from './sign-in/sign-in.component';
 import {SignOutComponent} from './sign-out/sign-out.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {CartComponent} from './cart/cart.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {CartComponent} from './cart/cart.component';
     MatIconModule,
     MatListModule,
     MatInputModule,
+    MatTableModule,
     MatSnackBarModule,
   ],
   providers: [],

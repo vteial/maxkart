@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
 import {environment} from '../../environments/environment';
-import {User} from '../@model/core';
+import {Product, User} from '../@model/core';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,8 @@ export class ApiService {
 
   userMap: Map<string, User>;
 
+  productList: Array<Product>;
+
   constructor(private httpClient: HttpClient, private storage: LocalStorageService) {
   }
 
@@ -28,6 +30,13 @@ export class ApiService {
     this.fetchData('users.json').subscribe(res => {
       this.userMap = res;
       console.log(this.userMap);
+    });
+  }
+
+  fetchProducts(): void {
+    this.fetchData('products.json').subscribe(res => {
+      this.productList = res;
+      console.log(this.productList);
     });
   }
 

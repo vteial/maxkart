@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.fetchUsers();
+    this.api.fetchProducts();
   }
 
 }
