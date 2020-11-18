@@ -6,10 +6,10 @@
     <mat-toolbar>MaxKart</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item [routerLink]="'/home'">Home</a>
-      <a mat-list-item [routerLink]="'/cart'">Cart</a>
-      <a mat-list-item [routerLink]="'/profile'">Profile</a>
-      <a mat-list-item [routerLink]="'/sign-out'">Sign Out</a>
-      <a mat-list-item [routerLink]="'/sign-in'">Sign In</a>
+      <a mat-list-item [routerLink]="'/cart'" *ngIf="sessionUser !== null">Cart</a>
+      <a mat-list-item [routerLink]="'/profile'" *ngIf="sessionUser !== null">Profile</a>
+      <a mat-list-item [routerLink]="'/sign-out'" *ngIf="sessionUser !== null">Sign Out</a>
+      <a mat-list-item [routerLink]="'/sign-in'" *ngIf="sessionUser === null">Sign In</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

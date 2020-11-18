@@ -13,7 +13,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -53,7 +53,7 @@ import {CartComponent} from './cart/cart.component';
     MatIconModule,
     MatListModule,
     MatInputModule,
-    MatSnackBar,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

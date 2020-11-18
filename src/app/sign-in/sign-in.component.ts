@@ -33,15 +33,14 @@ export class SignInComponent extends BaseComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.snackBar.open('Coming soon', 'Alert', {
-      duration: 5000
-    });
     // console.log('Your form model : ', this.model);
-    // this.api.signIn(this.model).subscribe((data: any) => {
-      // this.toastr.success('Welcome!', 'Ok!');
-      // this.api.processAndSetSessionUser(data);
-      // this.router.navigateByUrl('/home').finally(() => {});
-    // });
+    if (this.api.signIn(this.model)) {
+      this.router.navigateByUrl('/home');
+    } else {
+      this.snackBar.open('Invalid UserId/Password', 'Ok', {
+        duration: 5000
+      });
+    }
   }
 
 }
