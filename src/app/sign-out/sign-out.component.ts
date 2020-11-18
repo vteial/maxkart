@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {BaseComponent} from '../base.component';
-import {ApiService} from '../../../zunk/frontend-bo/src/app/@shared/api.service';
 import {Router} from '@angular/router';
+import {ApiService} from '../@shared/api.service';
+import {BaseComponent} from '../base.component';
 
 @Component({
   selector: 'app-sign-out',
