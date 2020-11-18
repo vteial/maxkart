@@ -12,7 +12,7 @@ import {Product} from '../@model/core';
 })
 export class HomeComponent extends BaseComponent implements OnInit {
 
-  dColumns: string[] = ['id', 'name', 'rate', 'stock', 'action'];
+  dColumns: string[] = ['id', 'name', 'rate', 'quantity', 'action'];
 
   products: Product[];
 

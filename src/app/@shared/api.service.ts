@@ -17,9 +17,13 @@ export class ApiService {
 
   userMap: Map<string, User>;
 
-  productList: Array<Product>;
+  productList: Product[];
 
-  constructor(private httpClient: HttpClient, private storage: LocalStorageService) {
+  shoppingCart: Product[];
+
+  constructor(private httpClient: HttpClient,
+              private storage: LocalStorageService) {
+    this.shoppingCart = [];
   }
 
   fetchData(urlSuffix: string): Observable<any> {

@@ -25,6 +25,7 @@ import {SignOutComponent} from './sign-out/sign-out.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {CartComponent} from './cart/cart.component';
 import {MatTableModule} from '@angular/material/table';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MatTableModule} from '@angular/material/table';
     SignInComponent,
     SignOutComponent,
     NotFoundComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
