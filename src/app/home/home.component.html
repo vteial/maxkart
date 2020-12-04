@@ -12,12 +12,12 @@
 
   <ng-container matColumnDef="rate">
     <th mat-header-cell *matHeaderCellDef> Rate </th>
-    <td mat-cell *matCellDef="let item"> {{item.rate}} </td>
+    <td mat-cell *matCellDef="let item"> {{item.rate | number:'1.2-2'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="quantity">
     <th mat-header-cell *matHeaderCellDef> Stock </th>
-    <td mat-cell *matCellDef="let item"> {{item.quantity}} </td>
+    <td mat-cell *matCellDef="let item"> {{item.quantity | number:'1.0'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="action">

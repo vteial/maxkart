@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ApiService} from '../@shared/api.service';
 import {BaseComponent} from '../base.component';
-import {Product} from '../@model/core';
+import {Cart, Product, PTran} from '../@model/core';
+import {PaymentService} from '../@shared/payment.service';
 
 @Component({
   selector: 'app-checkout',
@@ -12,9 +13,14 @@ import {Product} from '../@model/core';
 })
 export class CheckoutComponent extends BaseComponent implements OnInit {
 
-  items: Product[];
+  @ViewChild('checkoutForm') checkoutFormElement;
+
+  shoppingCart: Cart;
+
+  item: PTran;
 
   constructor(private api: ApiService,
+              private payment: PaymentService,
               private snackBar: MatSnackBar,
               private router: Router) {
     super();
@@ -22,7 +28,22 @@ export class CheckoutComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.items = this.api.shoppingCart;
+    this.shoppingCart = this.api.shoppingCart;
+
+    const model = new PTran();
+    model.refNo = 'Some Ref No.';
+    model.name = 'Some Name';
+    model.email = 'somename@gmail.com';
+    model.mobile = '061234567890';
+    model.total = this.shoppingCart.totalAmount;
+    model.description = 'Some Description';
+    this.payment.fillPTranFields(model);
+
+    this.item = model;
+  }
+
+  next(): void {
+    this.checkoutFormElement.nativeElement.submit();
   }
 
 }

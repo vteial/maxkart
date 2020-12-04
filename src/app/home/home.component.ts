@@ -3,7 +3,7 @@ import {BaseComponent} from '../base.component';
 import {ApiService} from '../@shared/api.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
-import {Product} from '../@model/core';
+import {CartItem, Product} from '../@model/core';
 
 @Component({
   selector: 'app-home',
@@ -28,6 +28,11 @@ export class HomeComponent extends BaseComponent implements OnInit {
   }
 
   addToCart(item: Product): void {
+    const citem = new CartItem();
+    citem.id = item.id;
+    citem.name = item.name;
+    citem.rate = item.rate;
+    this.api.shoppingCart.addItem(citem);
     this.snackBar.open('Added to cart...', 'Ok', {
       duration: 3000
     });

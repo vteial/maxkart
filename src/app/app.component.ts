@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ReactiveFormConfig} from '@rxweb/reactive-form-validators';
 import {ApiService} from './@shared/api.service';
+import {PaymentService} from './@shared/payment.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
 
   appDescription = 'Max Gold Shop';
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService,
+              private payment: PaymentService) {
     ReactiveFormConfig.set({
       validationMessage: {
         required: 'This field is required.',
@@ -26,6 +28,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.payment.fetchCollectionAndSetCollectionId();
     this.api.fetchUsers();
     this.api.fetchProducts();
   }

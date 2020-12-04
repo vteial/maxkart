@@ -1,1 +1,21 @@
-<p>checkout works!</p>
+<pre>{{item | json}}</pre>
+
+<br/>
+
+<form #checkoutForm method="post" action="https://api-staging.paymence.com/api/merchant/transaction/create" novalidate>
+  <input type="hidden" id="refNo" name="refNo" value="{{item.refNo}}">
+  <input type="hidden" id="name" name="name" value="{{item.name}}">
+  <input type="hidden" id="email" name="email" value="{{item.email}}">
+  <input type="hidden" id="mobile" name="mobile" value="{{item.mobile}}">
+  <input type="hidden" id="total" name="total" value="{{item.total}}">
+  <input type="hidden" id="description" name="description" value="{{item.description}}">
+  <input type="hidden" id="merchantId" name="merchantId" value="{{item.merchantId}}">
+  <input type="hidden" id="collectionId" name="collectionId" value="{{item.collectionId}}">
+  <input type="hidden" id="returnUrlIndirect" name="returnUrlIndirect" value="{{item.returnUrlInDirect}}">
+  <input type="hidden" id="checksum" name="checksum" value="{{item.checksum}}">
+  <button mat-raised-button color="primary" (click)="next()">Next</button>
+</form>
+
+<!--
+http://localhost:4200/payment?refNo=Some%20Ref%20No.?status=success?statusDesc=Approved?transactionRef=0024-0000-0106
+-->

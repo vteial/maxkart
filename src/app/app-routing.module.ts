@@ -7,12 +7,14 @@ import {HomeComponent} from './home/home.component';
 import {SignInComponent} from './sign-in/sign-in.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {CheckoutComponent} from './checkout/checkout.component';
+import {PaymentAcknowledgeComponent} from './payment-acknowledge/payment-acknowledge.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'cart', component: CartComponent},
   {path: 'checkout', component: CheckoutComponent},
+  {path: 'payment-acknowledge', component: PaymentAcknowledgeComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'sign-out', component: SignOutComponent},
   {path: 'sign-in', component: SignInComponent},

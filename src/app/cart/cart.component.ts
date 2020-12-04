@@ -3,7 +3,7 @@ import {BaseComponent} from '../base.component';
 import {ApiService} from '../@shared/api.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
-import {Product} from '../@model/core';
+import {Cart} from '../@model/core';
 
 @Component({
   selector: 'app-cart',
@@ -12,9 +12,9 @@ import {Product} from '../@model/core';
 })
 export class CartComponent extends BaseComponent implements OnInit {
 
-  dColumns: string[] = ['id', 'name', 'rate', 'quantity', 'action'];
+  dColumns: string[] = ['id', 'name', 'rate', 'quantity', 'amount', 'action'];
 
-  items: Product[];
+  shoppingCart: Cart;
 
   constructor(private api: ApiService,
               private snackBar: MatSnackBar,
@@ -24,10 +24,11 @@ export class CartComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.items = this.api.shoppingCart;
+    this.shoppingCart = this.api.shoppingCart;
   }
 
   removeFromCart(index: number): void {
+    this.shoppingCart.removeItemByIndex(index);
     this.snackBar.open('Removed from cart...', 'Ok', {
       duration: 3000
     });

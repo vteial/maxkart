@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   mode: 'dev',
   baseApiPrefix: 'assets/data',
+  paymentApiPrefix: 'https://api-staging.paymence.com/api'
 };
 
 /*

@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {LocalStorage, LocalStorageService} from 'ngx-webstorage';
 import {environment} from '../../environments/environment';
-import {Product, User} from '../@model/core';
+import {Cart, CartItem, Product, User} from '../@model/core';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +19,11 @@ export class ApiService {
 
   productList: Product[];
 
-  shoppingCart: Product[];
+  shoppingCart: Cart;
 
   constructor(private httpClient: HttpClient,
               private storage: LocalStorageService) {
-    this.shoppingCart = [];
+    this.shoppingCart = new Cart();
   }
 
   fetchData(urlSuffix: string): Observable<any> {
