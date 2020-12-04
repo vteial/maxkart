@@ -15,7 +15,7 @@ export class PaymentService {
 
   private merchantId = 24;
 
-  private collectionId = 1;
+  private collectionId = 7;
 
   private returnUrlIndirect = environment.returnUrlIndirect;
 
