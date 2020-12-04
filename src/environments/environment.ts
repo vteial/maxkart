@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   mode: 'dev',
   baseApiPrefix: 'assets/data',
-  paymentApiPrefix: 'https://api-staging.paymence.com/api'
+  paymentApiPrefix: 'https://api-staging.paymence.com/api',
+  returnUrlIndirect: 'http://localhost:4200/payment-acknowledge'
 };
 
 /*

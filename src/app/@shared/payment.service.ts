@@ -17,7 +17,7 @@ export class PaymentService {
 
   private collectionId = 1;
 
-  private returnUrlIndirect = 'http://localhost:4200/payment-acknowledge';
+  private returnUrlIndirect = environment.returnUrlIndirect;
 
   constructor(private httpClient: HttpClient) {
   }
