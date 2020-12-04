@@ -1,8 +1,8 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import {enableProdMode} from '@angular/core';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
+import {AppModule} from './app/app.module';
+import {environment} from './environments/environment';
 
 if (environment.production) {
   enableProdMode();
@@ -10,6 +10,7 @@ if (environment.production) {
 
 environment.mode = 'prod';
 // environment.baseApiPrefix = 'https://api.paymence.com/api';
+environment.returnUrlIndirect = 'https://maxkart.vercel.app/payment-acknowledge';
 if (window.location.hostname.indexOf('staging') > -1) {
   environment.mode = 'staging';
   // environment.baseApiPrefix = 'https://api-staging.paymence.com/api';
@@ -17,6 +18,7 @@ if (window.location.hostname.indexOf('staging') > -1) {
 if (window.location.hostname.indexOf('localhost') > -1) {
   environment.mode = 'dev';
   // environment.baseApiPrefix = 'https://api-staging.paymence.com/api';
+  environment.returnUrlIndirect = 'http://localhost:4200/payment-acknowledge';
 }
 const usp = new URLSearchParams(document.location.search);
 if (usp.has('mode')) {
