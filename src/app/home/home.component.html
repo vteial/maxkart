@@ -11,18 +11,18 @@
   </ng-container>
 
   <ng-container matColumnDef="rate">
-    <th mat-header-cell *matHeaderCellDef> Rate </th>
-    <td mat-cell *matCellDef="let item"> {{item.rate | number:'1.2-2'}} </td>
+    <th class="text-right" mat-header-cell *matHeaderCellDef> Rate </th>
+    <td class="text-right" mat-cell *matCellDef="let item"> {{item.rate | number:'1.2-2'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef> Stock </th>
-    <td mat-cell *matCellDef="let item"> {{item.quantity | number:'1.0'}} </td>
+    <th class="text-right" mat-header-cell *matHeaderCellDef> Stock </th>
+    <td class="text-right" mat-cell *matCellDef="let item"> {{item.quantity | number:'1.0'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="action">
-    <th mat-header-cell *matHeaderCellDef> &nbsp; </th>
-    <td mat-cell *matCellDef="let item">
+    <th class="text-center" mat-header-cell *matHeaderCellDef> &nbsp; </th>
+    <td class="text-center" mat-cell *matCellDef="let item">
       <button mat-button color="primary" (click)="addToCart(item)">Add To Cart</button>
     </td>
   </ng-container>
@@ -30,6 +30,11 @@
   <tr mat-header-row *matHeaderRowDef="dColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: dColumns;"></tr>
 </table>
+
+<br/>
+<div>
+  <a mat-raised-button color="primary" [routerLink]="'/cart'">View Cart</a>
+</div>
 
 <!--
 <ng-container matColumnDef="position">

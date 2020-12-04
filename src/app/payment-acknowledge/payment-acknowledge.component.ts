@@ -22,7 +22,12 @@ export class PaymentAcknowledgeComponent extends BaseComponent implements OnInit
   }
 
   ngOnInit(): void {
-    this.params = this.activatedRoute.snapshot.paramMap;
+    // http://localhost:4200/payment-acknowledge?refNo=Some%20Ref%20No.&status=pending&statusDesc=null&transactionRef=0024-0000-0114
+    this.params = new Map<string, any>();
+    this.activatedRoute.queryParams.subscribe( params => {
+      this.params = params;
+      console.log(this.params);
+    });
   }
 
 }
