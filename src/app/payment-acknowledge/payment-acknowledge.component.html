@@ -1,4 +1,48 @@
+<!--
+refNo=Some%20Ref%20No.&status=success&statusDesc=Approved&transactionRef=0002-0000-0016&transactionDateTime=1607678742000&transactionAmount=100&transactionOriRef=2012111725420246&transactionBankName=TEST%20BANK%200021
+-->
 <br/>
+<div fxLayout="row" fxLayoutAlign="space-between" fxLayout.lt-md="column">
+  <div fxFlex="50" fxLayout="column" fxLayoutGap="20px">
+    <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.lt-md="column">
+      <div fxFlex="50">Ref No</div>
+      <div fxFlex="50"><strong>{{params.refNo}}</strong></div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.lt-md="column">
+      <div fxFlex="50">Status</div>
+      <div fxFlex="50"><strong>{{params.status}}</strong></div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.lt-md="column">
+      <div fxFlex="50">Status Description</div>
+      <div fxFlex="50"><strong>{{params.statusDesc}}</strong></div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.lt-md="column">
+      <div fxFlex="50">Transaction Ref</div>
+      <div fxFlex="50"><strong>{{params.transactionRef}}</strong></div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.lt-md="column">
+      <div fxFlex="50">Transaction Amount</div>
+      <div fxFlex="50"><strong>{{params.transactionAmount}}</strong></div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.lt-md="column">
+      <div fxFlex="50">Transaction Time</div>
+      <div fxFlex="50"><strong>{{params.transactionDateTime}}</strong></div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.lt-md="column">
+      <div fxFlex="50">Transaction ORI Ref</div>
+      <div fxFlex="50"><strong>{{params.transactionOriRef}}</strong></div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.lt-md="column">
+      <div fxFlex="50">Transaction Bank</div>
+      <div fxFlex="50"><strong>{{params.transactionBankName}}</strong></div>
+    </div>
+  </div>
+  <div fxFlex="50" fxHide.lt-md>&nbsp;</div>
+</div>
+<br/>
+<!--
 <pre>{{params | json}}</pre>
 <br/>
+-->
 <a mat-raised-button color="primary" [routerLink]="'/home'">Ok</a>
+

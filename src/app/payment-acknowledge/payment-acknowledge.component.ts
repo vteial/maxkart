@@ -18,7 +18,7 @@ export class PaymentAcknowledgeComponent extends BaseComponent implements OnInit
               private activatedRoute: ActivatedRoute,
               private router: Router) {
     super();
-    this.viewName = 'Payment Acknowledgment';
+    this.viewName = 'Anybills - Payment Acknowledgment';
   }
 
   ngOnInit(): void {

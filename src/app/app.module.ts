@@ -7,6 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RxReactiveFormsModule} from '@rxweb/reactive-form-validators';
 import {LayoutModule} from '@angular/cdk/layout';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -26,7 +27,7 @@ import {SignOutComponent} from './sign-out/sign-out.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {CartComponent} from './cart/cart.component';
 import {CheckoutComponent} from './checkout/checkout.component';
-import { PaymentAcknowledgeComponent } from './payment-acknowledge/payment-acknowledge.component';
+import {PaymentAcknowledgeComponent} from './payment-acknowledge/payment-acknowledge.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { PaymentAcknowledgeComponent } from './payment-acknowledge/payment-ackno
     // ClipboardModule,
     NgxWebstorageModule.forRoot(),
     LayoutModule,
+    FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
